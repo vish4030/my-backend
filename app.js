@@ -7,10 +7,22 @@ import userRouter from "./routes/user.js";
 export const app = express();
 
 app.get('/',(req,res)=>res.send("localhost is working"));
+
+// Global error handler
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+  });
+
 app.use(cors());
 app.use(express.json())
 app.use(busRouter);
 app.use(userRouter);
 
-app.listen(process.env.PORT,()=>{console.log(`server working at port ${process.env.PORT}`)})
+// Set port
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server working at port ${PORT}`);
+});
+
 
