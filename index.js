@@ -5,6 +5,7 @@ import busRouter from "./routes/bus.js";
 import userRouter from "./routes/user.js";
 
 const app = express();
+app.use(cors());
 
 app.get('/',(req,res)=>res.send("localhost is working"));
 
@@ -14,7 +15,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
   });
 
-app.use(cors());
+
 app.use(express.json())
 app.use(busRouter);
 app.use(userRouter);
