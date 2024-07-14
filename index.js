@@ -4,7 +4,7 @@ import cors from 'cors';
 import busRouter from "./routes/bus.js";
 import userRouter from "./routes/user.js";
 
-export const app = express();
+const app = express();
 
 app.get('/',(req,res)=>res.send("localhost is working"));
 
